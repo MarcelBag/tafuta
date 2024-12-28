@@ -1,3 +1,4 @@
+// Handle Track Form Submission
 document.getElementById('track-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const phoneNumber = document.getElementById('phone-number').value;
@@ -8,6 +9,11 @@ document.getElementById('track-form').addEventListener('submit', async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ phone_number: phoneNumber }),
         });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const data = await response.json();
         document.getElementById('result').innerHTML = `
             <div class="alert alert-success">Tracking initiated for ${data.phone_number}</div>
@@ -16,13 +22,14 @@ document.getElementById('track-form').addEventListener('submit', async (e) => {
         document.getElementById('result').innerHTML = `
             <div class="alert alert-danger">Error: ${error.message}</div>
         `;
+        console.error('Tracking Error:', error);
     }
 });
 
 // Handle Report Form Submission
 document.getElementById('report-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    const phoneNumber = document.getElementById('phone-number').value;
+    const phoneNumber = document.getElementById('report-phone-number').value;
 
     try {
         const response = await fetch('/report', {
@@ -30,17 +37,28 @@ document.getElementById('report-form').addEventListener('submit', async (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ phone_number: phoneNumber }),
         });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const data = await response.json();
+
+        // Show success message
         document.getElementById('report-result').innerHTML = `
             <div class="alert alert-success">
                 Number ${data.phone_number} reported successfully! Total reports: ${data.reports}.
             </div>
         `;
+
+        // Show the "Reported Numbers" section and update the list
+        document.getElementById('reported-numbers').classList.remove('d-none');
         fetchReportedNumbers();
     } catch (error) {
         document.getElementById('report-result').innerHTML = `
             <div class="alert alert-danger">Error: ${error.message}</div>
         `;
+        console.error('Reporting Error:', error);
     }
 });
 
@@ -48,10 +66,14 @@ document.getElementById('report-form').addEventListener('submit', async (e) => {
 async function fetchReportedNumbers() {
     try {
         const response = await fetch('/report');
-        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
+        const data = await response.json();
         const numberList = document.getElementById('number-list');
         numberList.innerHTML = ''; // Clear existing list
+
         data.forEach((item) => {
             const listItem = document.createElement('li');
             listItem.className = 'list-group-item';
@@ -65,5 +87,3 @@ async function fetchReportedNumbers() {
 
 // Fetch numbers on page load
 fetchReportedNumbers();
-
-

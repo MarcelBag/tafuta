@@ -9,36 +9,39 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Tafuta - Number Tracker</h1>
-        <form id="track-form" class="mt-4">
+    <div class="container d-flex flex-column align-items-center mt-5">
+        <h1 class="text-center mb-4">Tafuta - Number Tracker</h1>
+        <form id="track-form" class="col-md-6 col-sm-8 col-10">
             <div class="mb-3">
                 <label for="phone-number" class="form-label">Enter Phone Number</label>
                 <input type="tel" class="form-control" id="phone-number" name="phone-number" placeholder="+24300000000" required>
             </div>
-            <button type="submit" class="btn btn-primary">Track</button>
+            <button type="submit" class="btn btn-primary w-100">Track</button>
         </form>
-        <div id="result" class="mt-4"></div>
+        <div id="result" class="mt-4 text-center"></div>
     </div>
 
-    <div id="report-number" class="mt-5">
-        <h2>Report a Suspicious Number</h2>
-        <form id="report-form">
-            <div class="mb-3">
-                <label for="phone-number" class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" id="phone-number" placeholder="+243812345678" required>
-            </div>
-            <button type="submit" class="btn btn-danger">Report Number</button>
-        </form>
-        <div id="report-result" class="mt-3"></div>
+    <div class="container d-flex flex-column align-items-center text-center mt-5">
+        <!-- Report Section -->
+        <div id="report-number" class="col-md-6 col-sm-8 col-10 mb-5">
+            <h2 class="mb-4">Report a Suspicious Number</h2>
+            <form id="report-form">
+                <div class="mb-3">
+                    <label for="report-phone-number" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="report-phone-number" placeholder="+243812345678" required>
+                </div>
+                <button type="submit" class="btn btn-danger w-100">Report Number</button>
+            </form>
+            <div id="report-result" class="mt-3"></div>
+        </div>
+    
+        <!-- Reported Numbers Section (Initially Hidden) -->
+        <div id="reported-numbers" class="col-md-6 col-sm-8 col-10 mt-5 d-none">
+            <h2 class="mb-4">Reported Numbers</h2>
+            <ul id="number-list" class="list-group"></ul>
+        </div>
     </div>
-    
-    <div id="reported-numbers" class="mt-5">
-        <h2>Reported Numbers</h2>
-        <ul id="number-list" class="list-group"></ul>
-    </div>
-    
-    
+
     <script src="js/app.js"></script>
 </body>
 </html>
