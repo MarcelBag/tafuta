@@ -21,10 +21,23 @@
         <div id="result" class="mt-4"></div>
     </div>
 
+    <div id="report-number" class="mt-5">
+        <h2>Report a Suspicious Number</h2>
+        <form id="report-form">
+            <div class="mb-3">
+                <label for="phone-number" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone-number" placeholder="+243812345678" required>
+            </div>
+            <button type="submit" class="btn btn-danger">Report Number</button>
+        </form>
+        <div id="report-result" class="mt-3"></div>
+    </div>
+    
     <div id="reported-numbers" class="mt-5">
         <h2>Reported Numbers</h2>
         <ul id="number-list" class="list-group"></ul>
     </div>
+    
     
     <script src="js/app.js"></script>
 </body>

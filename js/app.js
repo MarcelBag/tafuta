@@ -19,6 +19,32 @@ document.getElementById('track-form').addEventListener('submit', async (e) => {
     }
 });
 
+// Handle Report Form Submission
+document.getElementById('report-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const phoneNumber = document.getElementById('phone-number').value;
+
+    try {
+        const response = await fetch('/report', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ phone_number: phoneNumber }),
+        });
+        const data = await response.json();
+        document.getElementById('report-result').innerHTML = `
+            <div class="alert alert-success">
+                Number ${data.phone_number} reported successfully! Total reports: ${data.reports}.
+            </div>
+        `;
+        fetchReportedNumbers();
+    } catch (error) {
+        document.getElementById('report-result').innerHTML = `
+            <div class="alert alert-danger">Error: ${error.message}</div>
+        `;
+    }
+});
+
+// Fetch Reported Numbers
 async function fetchReportedNumbers() {
     try {
         const response = await fetch('/report');
@@ -37,6 +63,7 @@ async function fetchReportedNumbers() {
     }
 }
 
-// Call the function on page load
+// Fetch numbers on page load
 fetchReportedNumbers();
+
 

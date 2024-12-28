@@ -21,3 +21,9 @@ def report_number():
         number.reports += 1
     db.commit()
     return jsonify({"status": "success", "phone_number": phone_number, "reports": number.reports})
+
+@report_number_bp.route('/report', methods=['GET'])
+def get_reported_numbers():
+    numbers = db.query(Number).all()
+    result = [{"phone_number": num.phone_number, "reports": num.reports} for num in numbers]
+    return jsonify(result)
