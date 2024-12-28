@@ -18,3 +18,25 @@ document.getElementById('track-form').addEventListener('submit', async (e) => {
         `;
     }
 });
+
+async function fetchReportedNumbers() {
+    try {
+        const response = await fetch('/report');
+        const data = await response.json();
+
+        const numberList = document.getElementById('number-list');
+        numberList.innerHTML = ''; // Clear existing list
+        data.forEach((item) => {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item';
+            listItem.textContent = `Number: ${item.phone_number}, Reports: ${item.reports}`;
+            numberList.appendChild(listItem);
+        });
+    } catch (error) {
+        console.error('Error fetching reported numbers:', error);
+    }
+}
+
+// Call the function on page load
+fetchReportedNumbers();
+
