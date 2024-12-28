@@ -32,7 +32,7 @@ document.getElementById('report-form').addEventListener('submit', async (e) => {
     const phoneNumber = document.getElementById('report-phone-number').value;
 
     try {
-        const response = await fetch('/report', {
+        const response = await fetch('http://127.0.0.1:5000/report', { // Changed URL
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ phone_number: phoneNumber }),
@@ -53,7 +53,7 @@ document.getElementById('report-form').addEventListener('submit', async (e) => {
 
         // Show the "Reported Numbers" section and update the list
         document.getElementById('reported-numbers').classList.remove('d-none');
-        fetchReportedNumbers();
+        fetchReportedNumbers(); // Refresh the list
     } catch (error) {
         document.getElementById('report-result').innerHTML = `
             <div class="alert alert-danger">Error: ${error.message}</div>
@@ -65,7 +65,7 @@ document.getElementById('report-form').addEventListener('submit', async (e) => {
 // Fetch Reported Numbers
 async function fetchReportedNumbers() {
     try {
-        const response = await fetch('/report');
+        const response = await fetch('http://127.0.0.1:5000/report'); // Changed URL
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }

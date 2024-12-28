@@ -9,10 +9,12 @@ app = Flask(__name__)
 # Register blueprints
 app.register_blueprint(track_number_bp)
 app.register_blueprint(report_number_bp)
-app = Flask (__name__)
 
 # Initialize tables
 Base.metadata.create_all(bind=engine)
+
+# Enable CORS
+CORS(app)
 
 @app.route('/')
 def home():
@@ -21,4 +23,3 @@ def home():
 if __name__ == "__main__":
     print("Starting Flask app...")  # Log to confirm script is executing
     app.run(debug=True)
-CORS(app)
