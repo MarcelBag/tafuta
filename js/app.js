@@ -1,3 +1,5 @@
+console.log('app.js is loaded successfully');
+
 // Handle Track Form Submission
 document.getElementById('track-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -91,6 +93,7 @@ async function fetchReportedNumbers() {
         console.error('Error fetching reported numbers:', error);
     }
 }
+
 
 // Fetch numbers on page load
 fetchReportedNumbers();
