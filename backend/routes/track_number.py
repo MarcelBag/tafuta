@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from models.database import SessionLocal, TrackingLog
+from datetime import datetime
 from models.number import Number
 import random
 
@@ -37,12 +38,14 @@ def track_number():
             report = Number(
                 phone_number=phone_number,
                 last_location=f"Lat: {location['latitude']}, Long: {location['longitude']}",
-                reports=1
+                reports=1, 
+                reported_at=datetime.utcnow()
             )
             db.add(report)
         else:
             report.last_location = f"Lat: {location['latitude']}, Long: {location['longitude']}"
             report.reports += 1
+            report.reported_at = datetime.utcnow()
 
         db.commit()
 

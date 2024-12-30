@@ -33,6 +33,7 @@ async function fetchReports(network = '') {
             row.innerHTML = `
                 <td>${item.phone_number}</td>
                 <td>${item.reports}</td>
+                <td>${item.reported_at || 'Unknown'}</td>
                 <td>${item.last_location || 'Unknown'}</td>
                 <td style="background-color: ${bgColor}; color: white;">${item.network}</td>
             `;

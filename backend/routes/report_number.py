@@ -80,6 +80,7 @@ def get_reported_numbers():
                     "phone_number": num.phone_number,
                     "reports": num.reports,
                     "last_location": num.last_location or "Unknown",
+                    "reported_at": num.reported_at.strftime('%Y-%m-%d %H:%M:%S') if num.reported_at else "Unknown",
                     "network": get_network(num.phone_number)
                 }
                 for num in numbers
