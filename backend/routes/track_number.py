@@ -37,6 +37,7 @@ def track_number():
             "location": location
         })
     except Exception as e:
+        print(f"Error during tracking: {e}")
         return jsonify({"error": str(e)}), 500
     finally:
         db.close()
