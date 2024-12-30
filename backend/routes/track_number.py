@@ -17,9 +17,26 @@ def track_number():
 
         # Simulated triangulation logic
         dummy_locations = [
-            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "city": "Goma"},
-            {"latitude": random.uniform(-1.0, -0.5), "longitude": random.uniform(29.5, 30.0), "city": "Bukavu"},
-            {"latitude": random.uniform(-0.5, 0.0), "longitude": random.uniform(28.5, 29.0), "city": "Kisangani"}
+            
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Katindo"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Himbi"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Les Volcans"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Mikeno"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Ndosho"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Majengo"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Mabanga Nord"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Mabanga Sud"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Kasika"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Mapendo"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Murara"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Bujovu"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Kahembe"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Kyeshero"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Mugunga"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Virunga"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Karisimbi"},
+            {"latitude": random.uniform(-1.5, -1.0), "longitude": random.uniform(29.0, 29.5), "quartier": "Kyeshero II"}
+
         ]
         location = random.choice(dummy_locations)
 
@@ -28,7 +45,7 @@ def track_number():
             phone_number=phone_number,
             latitude=location['latitude'],
             longitude=location['longitude'],
-            city=location['city']
+            city=location['quartier']
         )
         db.add(tracking_log)
 
