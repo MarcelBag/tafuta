@@ -30,10 +30,22 @@ def get_reported_numbers():
     try:
         # Get query parameters
         phone_number = request.args.get('phone_number')  # Filter by phone number
+        network_filter = request.args.get('network')  # Filter by network
         sort_by = request.args.get('sort_by', 'reports')  # Sort by field (default: reports)
         sort_order = request.args.get('sort_order', 'desc')  # Sort order (asc or desc)
         page = int(request.args.get('page', 1))  # Pagination: page number
         per_page = int(request.args.get('per_page', 10))  # Pagination: items per page
+
+        # Determine network based on phone number
+        def get_network(phone_number):
+            if phone_number.startswith(('+2439', '09')):
+                return 'Airtel'
+            elif phone_number.startswith(('+24385', '+24389', '085', '089')):
+                return 'Orange'
+            elif phone_number.startswith(('+24381', '081')):
+                return 'Vodacom'
+            else:
+                return 'Unknown'
 
         # Query the database
         query = db.query(Number)
@@ -42,18 +54,16 @@ def get_reported_numbers():
         if phone_number:
             query = query.filter(Number.phone_number.like(f"%{phone_number}%"))
 
-        # Apply sorting
-        if sort_by == 'reports':
-            sort_column = Number.reports
-        elif sort_by == 'phone_number':
-            sort_column = Number.phone_number
-        else:
-            sort_column = Number.reports  # Default to reports
+        if network_filter:
+            query = query.filter(
+                Number.phone_number.in_(
+                    [num.phone_number for num in query if get_network(num.phone_number) == network_filter]
+                )
+            )
 
-        if sort_order == 'asc':
-            query = query.order_by(sort_column.asc())
-        else:
-            query = query.order_by(sort_column.desc())
+        # Apply sorting
+        sort_column = Number.reports if sort_by == 'reports' else Number.phone_number
+        query = query.order_by(sort_column.asc() if sort_order == 'asc' else sort_column.desc())
 
         # Apply pagination
         total_items = query.count()
@@ -66,7 +76,12 @@ def get_reported_numbers():
             "per_page": per_page,
             "total_pages": (total_items + per_page - 1) // per_page,
             "data": [
-                {"phone_number": num.phone_number, "reports": num.reports}
+                {
+                    "phone_number": num.phone_number,
+                    "reports": num.reports,
+                    "last_location": num.last_location or "Unknown",
+                    "network": get_network(num.phone_number)
+                }
                 for num in numbers
             ],
         }

@@ -3,6 +3,7 @@ from routes.track_number import track_number_bp
 from routes.report_number import report_number_bp
 from models.database import engine, Base
 from flask_cors import CORS
+from models.database import DATABASE_URL
 
 app = Flask(__name__)
 
@@ -23,3 +24,9 @@ def home():
 if __name__ == "__main__":
     print("Starting Flask app...")  # Log to confirm script is executing
     app.run(debug=True)
+
+from models.database import Base, engine
+
+print("Initializing database...")
+Base.metadata.create_all(bind=engine)
+print("Database initialized!")

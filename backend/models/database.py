@@ -1,17 +1,18 @@
+import os
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from datetime import datetime
+from datetime import datetime, timezone
 
-DATABASE_URL = "sqlite:///tafuta.db"
+# Set the absolute path to the database file
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))  # Get the directory of this file
+DATABASE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'tafuta.db')}"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-# Existing tables...
-
-# New table for tracking logs
+# TrackingLog table definition
 class TrackingLog(Base):
     __tablename__ = "tracking_logs"
 
@@ -20,6 +21,7 @@ class TrackingLog(Base):
     latitude = Column(Float)
     longitude = Column(Float)
     city = Column(String)
-    tracked_at = Column(DateTime, default=datetime.utcnow)
+    tracked_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))  # Timezone-aware datetime
 
+# Initialize database tables
 Base.metadata.create_all(bind=engine)

@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from models.database import SessionLocal, TrackingLog
+from models.number import Number
 import random
 
 track_number_bp = Blueprint('track_number', __name__)
@@ -21,14 +22,28 @@ def track_number():
         ]
         location = random.choice(dummy_locations)
 
-        # Log the tracking request
-        log = TrackingLog(
+        # Log the tracking request in the TrackingLog table
+        tracking_log = TrackingLog(
             phone_number=phone_number,
             latitude=location['latitude'],
             longitude=location['longitude'],
             city=location['city']
         )
-        db.add(log)
+        db.add(tracking_log)
+
+        # Sync the data with the reports table
+        report = db.query(Number).filter_by(phone_number=phone_number).first()
+        if not report:
+            report = Number(
+                phone_number=phone_number,
+                last_location=f"Lat: {location['latitude']}, Long: {location['longitude']}",
+                reports=1
+            )
+            db.add(report)
+        else:
+            report.last_location = f"Lat: {location['latitude']}, Long: {location['longitude']}"
+            report.reports += 1
+
         db.commit()
 
         return jsonify({
@@ -37,7 +52,6 @@ def track_number():
             "location": location
         })
     except Exception as e:
-        print(f"Error during tracking: {e}")
         return jsonify({"error": str(e)}), 500
     finally:
         db.close()
