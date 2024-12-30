@@ -55,12 +55,14 @@ def track_number():
             report = Number(
                 phone_number=phone_number,
                 last_location=f"Lat: {location['latitude']}, Long: {location['longitude']}",
+                places=location['quartier'],
                 reports=1, 
                 reported_at=datetime.utcnow()
             )
             db.add(report)
         else:
             report.last_location = f"Lat: {location['latitude']}, Long: {location['longitude']}"
+            report.places = location['quartier']
             report.reports += 1
             report.reported_at = datetime.utcnow()
 

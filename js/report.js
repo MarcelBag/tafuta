@@ -35,6 +35,7 @@ async function fetchReports(network = '') {
                 <td>${item.reports}</td>
                 <td>${item.reported_at || 'Unknown'}</td>
                 <td>${item.last_location || 'Unknown'}</td>
+                <td>${item.places || 'Unknown'}</td>
                 <td style="background-color: ${bgColor}; color: white;">${item.network}</td>
             `;
             tableBody.appendChild(row);

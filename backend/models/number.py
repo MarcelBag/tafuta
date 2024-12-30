@@ -10,4 +10,5 @@ class Number(Base):
     last_location = Column(String, nullable=True)
     reports = Column(Integer, default=0)
     reported_at = Column(DateTime, default=datetime.utcnow)
+    places = Column(String, nullable=True)
     
