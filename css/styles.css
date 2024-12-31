@@ -1,3 +1,10 @@
+body {
+    background-image: url('assets/images/tafta.webp');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the image */
+}
+
 #report-number, #reported-numbers {
     max-width: 600px;
     margin: 0 auto;
