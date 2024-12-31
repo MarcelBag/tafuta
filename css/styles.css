@@ -1,8 +1,8 @@
 body {
-    background-image: url('assets/images/tafta.webp');
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-position: center; /* Centers the image */
+    background-image: url('assets/images/taf.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #report-number, #reported-numbers {
