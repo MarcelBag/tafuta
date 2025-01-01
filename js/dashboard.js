@@ -1,12 +1,17 @@
+let networkChartInstance = null;
+let placesChartInstance = null;
+
 async function fetchDashboardData() {
     const startDate = document.getElementById('start-date').value;
     const endDate = document.getElementById('end-date').value;
     const network = document.getElementById('network-filter').value;
+    const place = document.getElementById('place-filter').value;
 
     let url = `http://127.0.0.1:5000/dashboard-data?`;
     if (startDate) url += `start_date=${startDate}&`;
     if (endDate) url += `end_date=${endDate}&`;
     if (network) url += `network=${network}&`;
+    if (place) url += `place=${place}&`;
 
     try {
         const response = await fetch(url);
@@ -16,7 +21,8 @@ async function fetchDashboardData() {
 
         // Update Network Chart
         const networkChart = document.getElementById('network-chart').getContext('2d');
-        new Chart(networkChart, {
+        if (networkChartInstance) networkChartInstance.destroy(); // Destroy previous instance
+        networkChartInstance = new Chart(networkChart, {
             type: 'pie',
             data: {
                 labels: Object.keys(data.network_counts),
@@ -30,7 +36,8 @@ async function fetchDashboardData() {
 
         // Update Places Chart
         const placesChart = document.getElementById('places-chart').getContext('2d');
-        new Chart(placesChart, {
+        if (placesChartInstance) placesChartInstance.destroy(); // Destroy previous instance
+        placesChartInstance = new Chart(placesChart, {
             type: 'bar',
             data: {
                 labels: Object.keys(data.places_counts),

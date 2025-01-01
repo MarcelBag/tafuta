@@ -5,8 +5,10 @@ from models.number import Number
 report_number_bp = Blueprint('report_number', __name__)
 db = SessionLocal()
 
+
 @report_number_bp.route('/report', methods=['POST'])
 def report_number():
+    """Endpoint to report a phone number."""
     try:
         data = request.json
         phone_number = data.get('phone_number')
@@ -25,8 +27,10 @@ def report_number():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
 @report_number_bp.route('/report', methods=['GET'])
 def get_reported_numbers():
+    """Endpoint to retrieve reported numbers with filtering, sorting, and pagination."""
     try:
         # Get query parameters
         phone_number = request.args.get('phone_number')  # Filter by phone number
@@ -53,7 +57,6 @@ def get_reported_numbers():
         # Apply filtering
         if phone_number:
             query = query.filter(Number.phone_number.like(f"%{phone_number}%"))
-
         if network_filter:
             query = query.filter(
                 Number.phone_number.in_(
@@ -87,19 +90,20 @@ def get_reported_numbers():
                 for num in numbers
             ],
         }
-
         return jsonify(result)
-
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+
 @report_number_bp.route('/dashboard-data', methods=['GET'])
 def get_dashboard_data():
+    """Endpoint to provide aggregated data for the dashboard."""
     try:
         # Query parameters for filtering
         start_date = request.args.get('start_date')  # e.g., 2024-01-01
         end_date = request.args.get('end_date')  # e.g., 2024-12-31
         network_filter = request.args.get('network')  # e.g., Airtel
+        place_filter = request.args.get('place')  # e.g., Katindo
 
         query = db.query(Number)
 
@@ -127,6 +131,10 @@ def get_dashboard_data():
                 )
             )
 
+        # Filter by place
+        if place_filter:
+            query = query.filter(Number.places == place_filter)
+
         # Aggregate data
         total_reports = query.count()
         network_counts = {"Airtel": 0, "Orange": 0, "Vodacom": 0, "Unknown": 0}
@@ -135,7 +143,6 @@ def get_dashboard_data():
         for record in query.all():
             network = get_network(record.phone_number)
             network_counts[network] += record.reports
-
             if record.places:
                 places_counts[record.places] = places_counts.get(record.places, 0) + record.reports
 
@@ -144,7 +151,5 @@ def get_dashboard_data():
             "network_counts": network_counts,
             "places_counts": places_counts
         })
-
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
