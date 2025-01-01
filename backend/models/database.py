@@ -23,5 +23,6 @@ class TrackingLog(Base):
     city = Column(String)
     tracked_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))  # Timezone-aware datetime
 
+
 # Initialize database tables
 Base.metadata.create_all(bind=engine)
