@@ -4,6 +4,6 @@ from .database import Base
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, index=True, extend_existing=True)
-    username = Column(String, unique=True, nullable=False, extend_existing=True)
-    password = Column(String, nullable=False, extend_existing=True)
+    id = Column(Integer, primary_key=True, index=True)  # Removed extend_existing
+    username = Column(String, unique=True, nullable=False)  # Removed extend_existing
+    password = Column(String, nullable=False)  # Removed extend_existing
