@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Tafuta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/static/css/styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Tafuta</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/report">Reports</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="/login" class="btn btn-primary me-2">Login</a>
+                    <a href="/register" class="btn btn-secondary">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container text-center mt-5">
+        <h1 class="mb-4">Welcome to Tafuta</h1>
+        <p class="lead">An advanced tool to track and report suspicious phone numbers, protecting our community from harm.</p>
+        <a href="/tracking" class="btn btn-success btn-lg mt-3">Start Tracking</a>
+    </div>
+
+    <!-- Image Gallery -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Our Features</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ url_for('static', filename='assets/images/image1.jpg') }}" class="img-fluid rounded" alt="Feature 1">
+                <h4 class="text-center mt-2">Feature 1</h4>
+                <p class="text-center">Description of the feature.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ url_for('static', filename='assets/images/image2.jpg') }}" class="img-fluid rounded" alt="Feature 2">
+                <h4 class="text-center mt-2">Feature 2</h4>
+                <p class="text-center">Description of the feature.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="{{ url_for('static', filename='assets/images/image3.jpg') }}" class="img-fluid rounded" alt="Feature 3">
+                <h4 class="text-center mt-2">Feature 3</h4>
+                <p class="text-center">Description of the feature.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
