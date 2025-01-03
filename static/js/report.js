@@ -1,6 +1,6 @@
 async function fetchReports(network = '') {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/report?network=${network}`);
+        const response = await fetch(`/api/report?network=${network}`);
         const data = await response.json();
 
         const tableBody = document.getElementById('report-table-body');
