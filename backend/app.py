@@ -31,6 +31,11 @@ def load_user(user_id):
     """Load a user by ID."""
     return db.query(User).get(user_id)
 
+@app.route('/')
+def home():
+    """Render the home page."""
+    return render_template('index.html')
+
 # Enable CORS for cross-origin requests
 CORS(app)
 
@@ -40,10 +45,6 @@ app.register_blueprint(report_number_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(register_bp)
 
-@app.route('/')
-def home():
-    """Render the home page."""
-    return render_template('index.html')
 
 @app.route('/tracking')
 @login_required
