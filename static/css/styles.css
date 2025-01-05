@@ -1,8 +1,16 @@
+/*
 body {
     background-image: url('assets/images/taf.webp');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background: url('/static/assets/images/tafta.webp') no-repeat center center fixed;
+} */
+
+body {
+    background-color:darkslategrey;
+    background-size: cover;
+    color: #ffffff; /* White color for readability */
 }
 
 #report-number, #reported-numbers {
