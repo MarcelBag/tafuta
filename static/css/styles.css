@@ -9,3 +9,33 @@ body {
     max-width: 600px;
     margin: 0 auto;
 }
+
+/* Dashboard Page */
+.filters label {
+    margin-right: 10px;
+}
+.filters select,
+.filters input {
+    margin-right: 20px;
+}
+
+/* Report Page */
+.list-group-item-airtel {
+    background-color: red;
+    color: white;
+}
+
+.list-group-item-orange {
+    background-color: orange;
+    color: white;
+}
+
+.list-group-item-vodacom {
+    background-color: blue;
+    color: white;
+}
+
+.list-group-item:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
