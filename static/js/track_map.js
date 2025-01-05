@@ -1,23 +1,24 @@
 // track_map.js
 
-// Initialize the map
-const map = L.map('map').setView([-1.286389, 36.817223], 6); // Default to Nairobi, Kenya
+// Initializing the OSMap
+const map = L.map('map').setView([-1.67409, 29.22845], 13); // Default to Goma
 
-// Add OpenStreetMap tiles
+// Adding OpenStreetMap tiles
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Fetch tracked numbers with geolocation data
+// Fetching tracked numbers with geolocation data
 async function fetchTrackedLocations() {
     try {
-        const response = await fetch('/api/tracked-locations'); // Ensure this endpoint exists in the backend
+        // backend endpoint for location
+        const response = await fetch('/api/tracked-locations'); 
         const data = await response.json();
 
-        data.forEach(location => {
+        data.data.forEach(location => {
             if (location.latitude && location.longitude) {
-                // Add marker for each location
+                // Adding a marker for each location
                 L.marker([location.latitude, location.longitude])
                     .addTo(map)
                     .bindPopup(`
@@ -34,5 +35,5 @@ async function fetchTrackedLocations() {
     }
 }
 
-// Call the function to load data on page load
+// Calling the function to load data on page load
 fetchTrackedLocations();
