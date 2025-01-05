@@ -1,5 +1,3 @@
-// track_map.js
-
 // Initializing the OSMap
 const map = L.map('map').setView([-1.67409, 29.22845], 13); // Default to Goma
 
@@ -21,16 +19,26 @@ async function fetchTrackedLocations() {
 
         data.data.forEach(location => {
             if (location.lat && location.long) {
-                const marker = L.marker([location.lat, location.long])
-                    .addTo(map)
-                    .bindTooltip(`
+                const popupContent = `
+                    <div>
                         <strong>Phone Number:</strong> ${location.phone_number}<br>
                         <strong>Place:</strong> ${location.city}<br>
                         <strong>Date & Time:</strong> ${location.tracked_at}
-                    `, {
-                        permanent: false,     // Tooltip only shows on hover
-                        direction: 'top'      // Position the tooltip above the marker
-                    });
+                    </div>
+                `;
+
+                const marker = L.marker([location.lat, location.long]).addTo(map);
+
+                // Bind a popup with content
+                marker.bindPopup(popupContent);
+
+                // Open the popup on hover and close it on mouseout
+                marker.on('mouseover', function () {
+                    marker.openPopup();
+                });
+                marker.on('mouseout', function () {
+                    marker.closePopup();
+                });
 
                 markers.push([location.lat, location.long]); // Add marker position
             }
