@@ -3,10 +3,6 @@ This project is dedicated to combating the alarming issue of kidnappings in the 
 local phone numbers to extort money from victims' families, often leading to tragic outcomes, even after ransom payments. 
 Our solution focuses on tracking these suspicious numbers, enabling authorities and communities to proactively prevent such crimes and save lives.
 
-
-----
-
-
 /assets
   /icons
   /images
