@@ -29,15 +29,17 @@ async function fetchTrackedLocations() {
 
                 const marker = L.marker([location.lat, location.long]).addTo(map);
 
-                // Bind a popup with content
-                marker.bindPopup(popupContent);
+                // Bind popup with selectable content
+                marker.bindPopup(popupContent, { closeOnClick: false });
 
-                // Open the popup on hover and close it on mouseout
+                // Open the popup on hover
                 marker.on('mouseover', function () {
                     marker.openPopup();
                 });
-                marker.on('mouseout', function () {
-                    marker.closePopup();
+
+                // Keep the popup open when clicked
+                marker.on('click', function () {
+                    marker.openPopup();
                 });
 
                 markers.push([location.lat, location.long]); // Add marker position
