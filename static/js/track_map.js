@@ -28,18 +28,34 @@ async function fetchTrackedLocations() {
                 `;
 
                 const marker = L.marker([location.lat, location.long]).addTo(map);
+                let popupClicked = false; // Flag to track if popup was clicked
 
                 // Bind popup with selectable content
                 marker.bindPopup(popupContent, { closeOnClick: false });
 
                 // Open the popup on hover
                 marker.on('mouseover', function () {
-                    marker.openPopup();
+                    if (!popupClicked) {
+                        marker.openPopup();
+                    }
+                });
+
+                // Close the popup on mouseout if it wasn't clicked
+                marker.on('mouseout', function () {
+                    if (!popupClicked) {
+                        marker.closePopup();
+                    }
                 });
 
                 // Keep the popup open when clicked
                 marker.on('click', function () {
+                    popupClicked = true; // Set flag to true
                     marker.openPopup();
+                });
+
+                // Reset flag when the popup is manually closed
+                map.on('popupclose', function () {
+                    popupClicked = false; // Reset flag
                 });
 
                 markers.push([location.lat, location.long]); // Add marker position
