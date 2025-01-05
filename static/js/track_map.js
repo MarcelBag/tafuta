@@ -68,6 +68,17 @@ async function fetchTrackedLocations() {
     } catch (error) {
         console.error('Error fetching tracked locations:', error);
     }
+    // Function to get the street name using Nominatim reverse geocoding
+async function getStreetName(lat, long) {
+    try {
+        const response = await fetch(`${NOMINATIM_URL}&lat=${lat}&lon=${long}`);
+        const data = await response.json();
+        return data.address.road || data.display_name || 'Unknown Street';
+    } catch (error) {
+        console.error('Error fetching street name:', error);
+        return 'Unknown Street';
+    }
+}
 }
 
 // Calling the function to load data on page load
