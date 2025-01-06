@@ -29,6 +29,15 @@
                             </li>
                     </ul>
                 </div>
+                <div class="d-flex">
+                    {% if current_user.is_authenticated %}
+                        <span class="me-2">Welcome, {{ current_user.username }}</span>
+                        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('login.login') }}" class="btn btn-primary me-2">Login</a>
+                        <a href="{{ url_for('register.register') }}" class="btn btn-secondary">Register</a>
+                    {% endif %}
+                </div>
             </div>
         </nav>
     <div class="container d-flex flex-column align-items-center mt-5">
