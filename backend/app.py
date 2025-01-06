@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_cors import CORS
-from flask_login import LoginManager, UserMixin, login_required, current_user
+from flask_login import LoginManager, UserMixin, login_required, logout_user, current_user
 from routes.track_number import track_number_bp
 from routes.report_number import report_number_bp
 from routes.login import login_bp
@@ -65,6 +65,14 @@ def dashboard():
 def report():
     """Render the report page."""
     return render_template('report.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    """Log out the current user and redirect to the home page."""
+    logout_user()
+    flash('You have been logged out.', 'success')
+    return redirect(url_for('home'))
 
 # Initialize database tables
 print("Initializing database...")
