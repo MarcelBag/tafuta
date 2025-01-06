@@ -1,49 +1,61 @@
-/*
-body {
-    background-image: url('assets/images/taf.webp');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background: url('/static/assets/images/tafta.webp') no-repeat center center fixed;
-} */
 
-body {
-    background-color:darkslategrey;
-    background-size: cover;
-    color: #ffffff; /* White color for readability */
-}
+    /*
+    body {
+        background-image: url('assets/images/taf.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background: url('/static/assets/images/tafta.webp') no-repeat center center fixed;
+    } */
 
-#report-number, #reported-numbers {
-    max-width: 600px;
-    margin: 0 auto;
-}
+    body {
+        background-color:darkslategrey;
+        background-size: cover;
+        color: #ffffff; /* White color for readability */
+    }
 
-/* Dashboard Page */
-.filters label {
-    margin-right: 10px;
-}
-.filters select,
-.filters input {
-    margin-right: 20px;
-}
+    #report-number, #reported-numbers {
+        max-width: 600px;
+        margin: 0 auto;
+    }
 
-/* Report Page */
-.list-group-item-airtel {
-    background-color: red;
-    color: white;
-}
+    /* Dashboard Page */
+    .filters label {
+        margin-right: 10px;
+    }
+    .filters select,
+    .filters input {
+        margin-right: 20px;
+    }
 
-.list-group-item-orange {
-    background-color: orange;
-    color: white;
-}
+    /* Report Page */
+    .list-group-item-airtel {
+        background-color: red;
+        color: white;
+    }
 
-.list-group-item-vodacom {
-    background-color: blue;
-    color: white;
-}
+    .list-group-item-orange {
+        background-color: orange;
+        color: white;
+    }
 
-.list-group-item:hover {
-    opacity: 0.8;
-    cursor: pointer;
-}
+    .list-group-item-vodacom {
+        background-color: blue;
+        color: white;
+    }
+
+    .list-group-item:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+        color: #ffffff;
+    }
+    
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+    

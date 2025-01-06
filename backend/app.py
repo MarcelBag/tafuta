@@ -1,13 +1,13 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_cors import CORS
 from flask_login import LoginManager, UserMixin, login_required, logout_user, current_user
 from routes.track_number import track_number_bp
 from routes.report_number import report_number_bp
 from routes.login import login_bp
 from routes.register import register_bp
+from routes.track_map import track_map_bp
 from models.database import Base, engine, SessionLocal
 from models.user import User
-from routes.track_map import track_map_bp
 import os
 
 # Flask app initialization
@@ -35,10 +35,13 @@ def load_user(user_id):
 @app.route('/')
 def home():
     """Render the home page."""
+    print(f"Current user: {current_user.is_authenticated}")  # Debugging log
     return render_template('index.html')
 
-# Enable CORS for cross-origin requests
-CORS(app)
+# Enable CORS only for API routes that need it
+CORS(track_number_bp)
+CORS(report_number_bp)
+CORS(track_map_bp)
 
 # Register blueprints for modular routing
 app.register_blueprint(track_number_bp)
@@ -46,7 +49,6 @@ app.register_blueprint(report_number_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(register_bp)
 app.register_blueprint(track_map_bp)
-
 
 @app.route('/tracking')
 @login_required

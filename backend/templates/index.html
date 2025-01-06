@@ -29,8 +29,13 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <a href="/login" class="btn btn-primary me-2">Login</a>
-                    <a href="/register" class="btn btn-secondary">Register</a>
+                    {% if current_user.is_authenticated %}
+                        <span class="me-2">Welcome, {{ current_user.username }}</span>
+                        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('login.login') }}" class="btn btn-primary me-2">Login</a>
+                        <a href="{{ url_for('register.register') }}" class="btn btn-secondary">Register</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -55,12 +60,12 @@
             <div class="col-md-4">
                 <img src="{{ url_for('static', filename='assets/images/tafta.webp') }}" class="img-fluid rounded" alt="Feature 2">
                 <h4 class="text-center mt-2">Dashboard</h4>
-                <p class="text-center">The Dashboard features shows how numbers are reports</p>
+                <p class="text-center">The Dashboard features shows how numbers are reported</p>
             </div>
             <div class="col-md-4">
                 <img src="{{ url_for('static', filename='assets/images/tafuta.webp') }}" class="img-fluid rounded" alt="Feature 3">
                 <h4 class="text-center mt-2">Tracking</h4>
-                <p class="text-center">Tringulation using networks API help identify the number's origin</p>
+                <p class="text-center">Triangulation using networks API helps identify the number's origin</p>
             </div>
         </div>
     </div>
