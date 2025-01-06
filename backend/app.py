@@ -8,6 +8,7 @@ from routes.register import register_bp
 from routes.track_map import track_map_bp
 from models.database import Base, engine, SessionLocal
 from models.user import User
+from routes.location_routes import location_bp
 import os
 
 # Flask app initialization
@@ -49,6 +50,7 @@ app.register_blueprint(report_number_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(register_bp)
 app.register_blueprint(track_map_bp)
+app.register_blueprint(location_bp)
 
 @app.route('/tracking')
 @login_required
