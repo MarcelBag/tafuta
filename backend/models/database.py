@@ -23,6 +23,14 @@ class TrackingLog(Base):
     city = Column(String)
     tracked_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))  # Timezone-aware datetime
 
+class TrackingMetadata(Base):
+    __tablename__ = 'tracking_metadata'
+
+    id = Column(String, primary_key=True)
+    unique_id = Column(String, nullable=False)
+    ip_address = Column(String, nullable=False)
+    user_agent = Column(String, nullable=False)
+    captured_at = Column(DateTime, nullable=False)
 
 # Initialize database tables
 Base.metadata.create_all(bind=engine)
