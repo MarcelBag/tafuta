@@ -23,6 +23,17 @@ class TrackingLog(Base):
     city = Column(String)
     tracked_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))  # Timezone-aware datetime
 
+# TrackingLog table definition
+class TrackingLog(Base):
+    __tablename__ = "tracking_logs"
+
+    id = Column(Integer, primary_key=True, index=True)
+    phone_number = Column(String, index=True)
+    latitude = Column(Float)
+    longitude = Column(Float)
+    city = Column(String)
+    tracked_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))  # Timezone-aware datetime
+
 class TrackingMetadata(Base):
     __tablename__ = 'tracking_metadata'
 
