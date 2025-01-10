@@ -17,3 +17,17 @@ def export_csv():
     
     # Write header
     writer.writerow(['Phone Number', 'Reports', 'Last Location', 'Places', 'Reported At'])
+
+    # Query the reported numbers
+    numbers = db.query(Number).all()
+    for num in numbers:
+        writer.writerow([
+            num.phone_number,
+            num.reports,
+            num.last_location or "Unknown",
+            num.places or "Unknown",
+            num.reported_at.strftime('%Y-%m-%d %H:%M:%S') if num.reported_at else "Unknown"
+        ])
+
+    output.seek(0)
+    return Response(output, mimetype='text/csv', headers={"Content-Disposition": "attachment;filename=reported_numbers.csv"})
