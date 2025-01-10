@@ -9,3 +9,11 @@ from models.database import TrackingLog
 export_bp = Blueprint('export', __name__)
 db = SessionLocal()
 
+@export_bp.route('/export/csv', methods=['GET'])
+def export_csv():
+    """Export reported numbers and tracking data as CSV."""
+    output = StringIO()
+    writer = csv.writer(output)
+    
+    # Write header
+    writer.writerow(['Phone Number', 'Reports', 'Last Location', 'Places', 'Reported At'])
