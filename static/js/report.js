@@ -10,13 +10,15 @@ async function fetchReports(network = '') {
         const filters = document.getElementById('network-filters').querySelectorAll('.list-group-item');
         filters.forEach((filter) => {
             if (network && filter.textContent !== network) {
-                filter.style.display = 'none'; // Hide filters that don't match the selected network
+                // Hide filters that don't match the selected network
+                filter.style.display = 'none'; 
             } else {
-                filter.style.display = 'block'; // Show filters
+                // Show filters
+                filter.style.display = 'block'; 
             }
         });
 
-        // Populate table with reports
+        // Populating table with reports
         data.data.forEach((item) => {
             const row = document.createElement('tr');
             let bgColor = '';
@@ -58,7 +60,8 @@ function filterNetwork(network) {
 }
 
 function resetFilters() {
-    fetchReports(); // Fetch all reports
+    // Fetch all reports
+    fetchReports(); 
     const filters = document.getElementById('network-filters').querySelectorAll('.list-group-item');
     filters.forEach((filter) => (filter.style.display = 'block')); // Show all filters
 }

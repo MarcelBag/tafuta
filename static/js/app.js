@@ -1,6 +1,6 @@
 console.log('app.js is loaded successfully');
 
-// Handle Track Form Submission
+// Form submissiong handling
 document.getElementById('track-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const phoneNumber = document.getElementById('phone-number').value;
@@ -17,10 +17,11 @@ document.getElementById('track-form').addEventListener('submit', async (e) => {
         }
 
         const data = await response.json();
-        console.log('Response data:', data); // Debug log for response
+        // Debugging log for response
+        console.log('Response data:', data); 
         const { phone_number, location } = data;
-
-        console.log('Extracted location:', location); // Debug log for location
+        // Debuging log for location
+        console.log('Extracted location:', location); 
 
 
         document.getElementById('result').innerHTML = `
@@ -37,7 +38,7 @@ document.getElementById('track-form').addEventListener('submit', async (e) => {
     }
 });
 
-// Handle Report Form Submission
+// Handling report submission
 document.getElementById('report-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const phoneNumber = document.getElementById('report-phone-number').value;
@@ -95,5 +96,5 @@ async function fetchReportedNumbers() {
 }
 
 
-// Fetch numbers on page load
+// all fetch numbers on page load
 fetchReportedNumbers();

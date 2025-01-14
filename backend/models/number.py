@@ -12,13 +12,3 @@ class Number(Base):
     reported_at = Column(DateTime, default=datetime.utcnow)
     places = Column(String, nullable=True)
     
-class Number(Base):
-    __tablename__ = "numero1"
-
-    id = Column(Integer, primary_key=True, index=True)
-    phone_number = Column(String, unique=True, index=True)
-    last_location = Column(String, nullable=True)
-    reports = Column(Integer, default=0)
-    reported_at = Column(DateTime, default=datetime.utcnow)
-    places = Column(String, nullable=True)
-    

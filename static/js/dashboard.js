@@ -21,7 +21,8 @@ async function fetchDashboardData() {
 
         // Update Network Chart
         const networkChart = document.getElementById('network-chart').getContext('2d');
-        if (networkChartInstance) networkChartInstance.destroy(); // Destroy previous instance
+        // Destroy previous instance
+        if (networkChartInstance) networkChartInstance.destroy(); 
         networkChartInstance = new Chart(networkChart, {
             type: 'pie',
             data: {

@@ -14,13 +14,15 @@ import os
 # Flask app initialization
 app = Flask(
     __name__,
-    template_folder='templates',  # Path to the templates folder
-    static_folder='../static'     # Path to the static files folder
+    #templates source
+    template_folder='templates',  
+     # static folders 
+    static_folder='../static'    
 )
 
 app.secret_key = 'your_secret_key'
 
-# Initialize Flask-Login
+# Initializing Flask-Login
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login.login'
@@ -39,12 +41,12 @@ def home():
     print(f"Current user: {current_user.is_authenticated}")  # Debugging log
     return render_template('index.html')
 
-# Enable CORS only for API routes that need it
+# Ebaling CORS only for API routes that need it
 CORS(track_number_bp)
 CORS(report_number_bp)
 CORS(track_map_bp)
 
-# Register blueprints for modular routing
+# Registering blueprints for modular routing
 app.register_blueprint(track_number_bp)
 app.register_blueprint(report_number_bp)
 app.register_blueprint(login_bp)
@@ -78,11 +80,13 @@ def logout():
     flash('You have been logged out.', 'success')
     return redirect(url_for('home'))
 
-# Initialize database tables
+# Initializing database tables
 print("Initializing database...")
 Base.metadata.create_all(bind=engine)
 print("Database initialized!")
 
 if __name__ == "__main__":
-    print("Starting Flask app...")  # Log for debugging
-    app.run(debug=True, port=5000)  # Flask will run on http://127.0.0.1:5000/
+     # debugging log
+    print("Starting Flask app...") 
+    # runing on port 5 http://127.0.0.1:5000/
+    app.run(debug=True, port=5000)  
