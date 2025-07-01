@@ -3,7 +3,21 @@ This project aim combating the alarming issue of kidnappings in the Democratic R
 local phone numbers to extort money from victims' families, often leading to tragic outcomes, even after ransom payments. 
 Our solution focuses on tracking these suspicious numbers, enabling authorities and communities to proactively prevent such crimes and save lives.
 
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/marcelbag/tafuta.git
+   cd tafuta
+
 ```
+2. Clone the repository:
+
+
+
+
+
 /backend
   /models
       database.py
