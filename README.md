@@ -19,11 +19,11 @@ Tafuta is a web-based application designed to combat the alarming issue of kidna
 ## Installation
 
 1. Clone the repository:
-   ```bash
+
+   ```
    git clone https://github.com/marcelbag/tafuta.git
    cd tafuta
-
-```
+    ```
 2. Install dependencies:
 ``` pip install -r requirements.txt ```
 
