@@ -29,6 +29,8 @@ Tafuta is a web-based application designed to combat the alarming issue of kidna
 2. Install dependencies:
 ``` pip install -r requirements.txt ```
 
+3. Set up the database:
+```python backend/models/initialize_db.py```
 
 
 
