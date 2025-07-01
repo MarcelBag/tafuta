@@ -32,6 +32,8 @@ Tafuta is a web-based application designed to combat the alarming issue of kidna
 3. Set up the database:
 ```python backend/models/initialize_db.py```
 
+4. Run the application:
+``` python backend/app.py ```
 
 
 
