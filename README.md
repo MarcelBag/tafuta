@@ -16,9 +16,32 @@ Tafuta is a web-based application designed to combat the alarming issue of kidna
 - **User Authentication**: Secure login and registration system for authorized users.
 - **Export Data**: Export reported numbers and tracking logs as CSV files for further analysis.
 
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/marcelbag/tafuta.git
+   cd tafuta
+
+```
+2. Install dependencies:
+``` pip install -r requirements.txt ```
+
+3. Set up the database:
+```python backend/models/initialize_db.py```
+
+4. Run the application:
+``` python backend/app.py ```
+
+5. Run the application:
+
+Access the application at http://127.0.0.1:5000.
+
+## Technologies used 
+
+
+
 ## Project Structure
-
-
 
 ```
 /backend
@@ -57,30 +80,5 @@ Tafuta is a web-based application designed to combat the alarming issue of kidna
       tringulation.py
       validation.py
 ```
-
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/marcelbag/tafuta.git
-   cd tafuta
-
-```
-2. Install dependencies:
-``` pip install -r requirements.txt ```
-
-3. Set up the database:
-```python backend/models/initialize_db.py```
-
-4. Run the application:
-``` python backend/app.py ```
-
-5. Run the application:
-
-Access the application at http://127.0.0.1:5000.
-
-## Technologies used 
-
 
 ![alt text](static/assets/images/tafta.webp)
