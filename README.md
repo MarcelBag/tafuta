@@ -18,33 +18,6 @@ Tafuta is a web-based application designed to combat the alarming issue of kidna
 
 ## Project Structure
 
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/marcelbag/tafuta.git
-   cd tafuta
-
-```
-2. Install dependencies:
-``` pip install -r requirements.txt ```
-
-3. Set up the database:
-```python backend/models/initialize_db.py```
-
-4. Run the application:
-``` python backend/app.py ```
-
-5. Run the application:
-
-Access the application at http://127.0.0.1:5000.
-
-## Technologies used 
-
-Backend: Flask, SQLAlchemy
-<vscode_annotation details='%5B%7B%22title%22%3A%22hardcoded-credentials%22%2C%22description%22%3A%22Embedding%20credentials%20in%20source%20code%20risks%20unauthorized%20access%22%7D%5D'> HTML</vscode_annotation>Frontend:, CSS, JavaScript, Bootstrap
-Database: SQLite
-APIs: Twilio for SMS, OpenStreetMap for geolocation
 
 
 ```
@@ -84,5 +57,30 @@ APIs: Twilio for SMS, OpenStreetMap for geolocation
       tringulation.py
       validation.py
 ```
+
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/marcelbag/tafuta.git
+   cd tafuta
+
+```
+2. Install dependencies:
+``` pip install -r requirements.txt ```
+
+3. Set up the database:
+```python backend/models/initialize_db.py```
+
+4. Run the application:
+``` python backend/app.py ```
+
+5. Run the application:
+
+Access the application at http://127.0.0.1:5000.
+
+## Technologies used 
+
 
 ![alt text](static/assets/images/tafta.webp)
