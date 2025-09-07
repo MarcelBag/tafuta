@@ -1,9 +1,17 @@
+version: '3.9'
 
 services:
   backend:
     build:
-      context: ../../  # root of tafuta
+      context: ../..
       dockerfile: backend/docker/Dockerfile
+      args:
+        ENV: dev
     container_name: tafuta_backend
     ports:
-      - "5001:5001"
+      - "5001:5000"
+    volumes:
+      - ../../backend:/app/backend
+    environment:
+      - FLASK_ENV=development
+    command: flask run --reload
