@@ -1,6 +1,6 @@
 # Environment file
 .env
-
+.env.dev
 # Database files
 /backend/models/tafuta.db
 

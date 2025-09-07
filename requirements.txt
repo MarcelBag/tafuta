@@ -271,3 +271,10 @@ xyzservices @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/xy
 yarl==1.18.3
 zipp==3.21.0
 zstandard @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/zstandard_1699238791645/work
+
+Flask
+flask-cors
+flask-login
+sqlalchemy
+werkzeug
+gunicorn
