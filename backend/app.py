@@ -1,3 +1,4 @@
+# backend/app.py
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_cors import CORS
 from flask_login import LoginManager, UserMixin, login_required, logout_user, current_user
@@ -10,7 +11,9 @@ from models.database import Base, engine, SessionLocal
 from models.user import User
 from routes.location_routes import location_bp
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Flask app initialization
 app = Flask(
     __name__,
@@ -20,7 +23,9 @@ app = Flask(
     static_folder='../static'    
 )
 
-app.secret_key = 'your_secret_key'
+# run python -c "import secrets; print(secrets.token_hex(32))" to get your secret key
+app.secret_key = os.getenv("SECRET_KEY", "fallback_secret_key")
+
 
 # Initializing Flask-Login
 login_manager = LoginManager()
