@@ -1,21 +1,7 @@
-# Local editable packages
--e ./local_packages/aext-assistant
--e ./local_packages/aext-assistant-server
--e ./local_packages/aext-core
--e ./local_packages/aext-core-server
--e ./local_packages/aext-panels
--e ./local_packages/aext-panels-server
--e ./local_packages/aext-project-filebrowser-server
--e ./local_packages/aext-share-notebook
--e ./local_packages/aext-share-notebook-server
--e ./local_packages/aext-shared
--e ./local_packages/aext-toolbox
-
 # Core Python packages
 Flask==3.1.0
 flask-cors==5.0.1
 Flask-Login==0.6.3
-Flask-Uploads==0.2.1
 SQLAlchemy==2.0.36
 Werkzeug==3.1.3
 gunicorn
@@ -39,18 +25,3 @@ tensorflow
 keras
 bokeh
 panel
-
-# Jupyter / Notebook support
-notebook
-ipykernel
-ipywidgets
-jupyterlab
-qtconsole
-
-# Optional / others (keep as needed)
-alembic
-click
-itsdangerous
-Jinja2
-jsonschema
-python-dateutil

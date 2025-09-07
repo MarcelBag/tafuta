@@ -1,17 +1,9 @@
-version: '3.9'
 
 services:
   backend:
     build:
-      context: ..
-      dockerfile: docker/Dockerfile
+      context: ../../  # root of tafuta
+      dockerfile: backend/docker/Dockerfile
     container_name: tafuta_backend
     ports:
-      - "5000:5000"
-    volumes:
-    # Mounting entire backend for live code changes
-      - ../:/app
-      # Mounting models folder for DB persistence 
-      - ../models:/app/models
-    environment:
-      - FLASK_ENV=development
+      - "5001:5001"
