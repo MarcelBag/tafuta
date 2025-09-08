@@ -16,9 +16,7 @@ Tafuta is a web-based application designed to combat the alarming issue of kidna
 - **Export Data**: Export reported numbers and tracking logs as CSV files for further analysis.
 
 ## Installation
-
 1. Clone the repository:
-
    ```
    git clone https://github.com/marcelbag/tafuta.git
    cd tafuta
