@@ -8,7 +8,6 @@ Our solution focuses on tracking these suspicious numbers, enabling authorities 
 Tafuta is a web-based application designed to combat the alarming issue of kidnappings in the Democratic Republic of Congo. Criminals often exploit local phone numbers to extort money from victims' families, leading to tragic outcomes even after ransom payments. This project aims to track suspicious phone numbers, enabling authorities and communities to proactively prevent such crimes and save lives.
 
 ## Features
-
 - **Phone Number Tracking**: Track suspicious phone numbers and identify their locations using triangulation and network APIs.
 - **Reporting System**: Report suspicious phone numbers to help build a database of potentially harmful numbers.
 - **Dashboard**: Visualize reports and tracking data with charts and filters for better insights.
