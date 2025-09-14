@@ -1,7 +1,8 @@
 .PHONY: dev prod stop logs
 
 dev:
-	docker-compose -f backend/docker/docker-compose.yml up --build
+	cd backend/docker && docker compose -p tafuta -f docker-compose.yml down --remove-orphans
+	cd backend/docker && docker compose -p tafuta -f docker-compose.yml up --build
 
 prod:
 	docker build -f backend/docker/Dockerfile --build-arg ENV=prod -t tafuta:latest .
